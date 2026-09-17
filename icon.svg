@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/>
+      <stop offset="1" stop-color="#16213e"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e94560"/>
+      <stop offset="1" stop-color="#ff6b6b"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f3460"/>
+      <stop offset="1" stop-color="#533483"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="32" fill="url(#bg)"/>
+  <!-- folder base -->
+  <path d="M32 96 L32 192 Q32 200 40 200 L216 200 Q224 200 224 192 L224 112 Q224 104 216 104 L120 104 L104 88 L40 88 Q32 88 32 96 Z" fill="#e94560" opacity="0.9"/>
+  <!-- upward arrow (upload) -->
+  <path d="M128 56 L128 132 M128 56 L152 76 M128 56 L104 76" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- shield -->
+  <path d="M176 120 L176 160 Q176 180 156 192 Q136 180 136 160 L136 120 Z" fill="#0f3460" opacity="0.8"/>
+  <path d="M156 128 L164 136 L150 152 L162 164" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

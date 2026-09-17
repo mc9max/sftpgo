@@ -1,0 +1,42 @@
+{
+  "PORT": {
+    "defaultValue": "8080",
+    "description": "Web UI port. Railway maps this to the public domain.",
+    "isOptional": false
+  },
+  "SFTPGO_SFTPD__BINDINGS__0__PORT": {
+    "defaultValue": "2022",
+    "description": "SFTP service port.",
+    "isOptional": false
+  },
+  "SFTPGO_SFTPD__BINDINGS__0__ADDRESS": {
+    "defaultValue": "0.0.0.0",
+    "description": "Bind address for the SFTP server.",
+    "isOptional": true
+  },
+  "SFTPGO_HTTPD__BINDINGS__0__ADDRESS": {
+    "defaultValue": "0.0.0.0",
+    "description": "Bind address for the Web UI.",
+    "isOptional": true
+  },
+  "SFTPGO_DATA_PROVIDER__DRIVER": {
+    "defaultValue": "sqlite",
+    "description": "Data provider: sqlite (single instance), mysql, postgresql, cockroachdb, bbolt, memory.",
+    "isOptional": false
+  },
+  "SFTPGO_DATA_PROVIDER__NAME": {
+    "defaultValue": "/var/lib/sftpgo/sftpgo.db",
+    "description": "SQLite database file path.",
+    "isOptional": false
+  },
+  "SFTPGO_LOG_LEVEL": {
+    "defaultValue": "INFO",
+    "description": "Logging level. Options: TRACE, DEBUG, INFO, WARN, ERROR.",
+    "isOptional": true
+  },
+  "TZ": {
+    "defaultValue": "UTC",
+    "description": "Timezone for log timestamps (e.g. America/New_York).",
+    "isOptional": true
+  }
+}
