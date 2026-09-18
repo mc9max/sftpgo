@@ -24,6 +24,11 @@
     "description": "Bind address for the Web UI.",
     "isOptional": true
   },
+  "SFTPGO_HTTPD__TOKEN_VALIDATION": {
+    "defaultValue": "1",
+    "description": "Web CSRF/JWT token validation mode. Required: 1 (no IP binding) behind Railway's reverse proxy, otherwise login fails with 'The form token is not valid' (sftpgo #1816).",
+    "isOptional": false
+  },
   "SFTPGO_DATA_PROVIDER__DRIVER": {
     "defaultValue": "sqlite",
     "description": "Data provider: sqlite (single instance), mysql, postgresql, cockroachdb, bbolt, memory.",
