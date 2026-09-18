@@ -1,11 +1,8 @@
 #!/bin/sh
 set -e
 
-# Fix volume permissions for Railway (root-owned mount, uid 1000 process)
-if [ -d "/var/lib/sftpgo" ]; then
-    chown -R 1000:1000 /var/lib/sftpgo || true
-    chmod -R 755 /var/lib/sftpgo || true
-fi
+# Railway volumes are root-owned; drakkan runs as uid 1000.
+# cd to /tmp so host keys and db are written to a writable dir.
+cd /tmp
 
-# Switch to uid 1000 and exec sftpgo
-exec su -s /bin/sh -c 'exec "$@"' sftpgo -- sftpgo serve
+exec sftpgo serve
