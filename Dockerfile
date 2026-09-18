@@ -5,12 +5,11 @@ ENV SFTPGO_HTTPD__BINDINGS__0__PORT=8080 \
     SFTPGO_SFTPD__BINDINGS__0__PORT=2022 \
     SFTPGO_SFTPD__BINDINGS__0__ADDRESS=0.0.0.0 \
     SFTPGO_DATA_PROVIDER__DRIVER=sqlite \
-    SFTPGO_DATA_PROVIDER__NAME=/var/lib/sftpgo/sftpgo.db
+    SFTPGO_DATA_PROVIDER__NAME=/tmp/sftpgo.db
 
 EXPOSE 8080 2022
 
 USER root
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+RUN mkdir -p /tmp/sftpgo && chmod 777 /tmp/sftpgo
+WORKDIR /tmp/sftpgo
+CMD ["sftpgo", "serve"]
