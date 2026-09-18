@@ -1,36 +1,58 @@
 # SFTPGo — Secure File Transfer Server
 
-Deploy a production-ready SFTP server with web UI on Railway.
+Deploy SFTPGo, a secure file transfer server with web UI, SFTP, FTP/S, and WebDAV support, on Railway.
 
-[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/sftpgo)
+## Deploy and Host
 
-## Features
+Host your own SFTPGo instance on Railway. This template provisions the SFTPGo server with persistent storage for user accounts, SSH keys, and SQLite configuration.
 
-- **SFTP** — Secure file transfer over SSH (port 2022)
-- **HTTP/S** — Web-based file access and management
-- **FTP/S** — Legacy FTP support with TLS
-- **WebDAV** — WebDAV file sharing protocol
-- **WebAdmin UI** — Browser-based admin panel
-- **WebClient** — Browser-based file browser
-- **Storage Backends** — Local filesystem, S3, GCS, Azure Blob, other SFTP servers
-- **Authentication** — Users, groups, SSH keys, API keys, OAuth2
-- **SQLite-backed** — Single-instance database with persistent storage
+[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/sftpgo-2)
 
-## Quick Start
+## Why Deploy
 
-1. Click **Deploy on Railway** above
-2. Configure admin credentials (auto-generated on first run if not set)
-3. Once deployed, visit your public domain to access the Web UI
-4. Create your first admin account and user
+SFTPGo is the open-source SFTP server powering secure file transfer for teams, DevOps pipelines, and self-hosted apps. Running it on Railway gives you a production-ready, auto-updating, globally reachable instance with:
 
-**Default admin setup**: On first visit, SFTPGo redirects to `/web/admin/setup` where you create your admin account.
+- **Multi-protocol** — SFTP, FTP/S, WebDAV, and HTTP/S from a single service
+- **Web UI** — browser-based admin panel and file browser
+- **Persistent storage** — user accounts, keys, and config survive restarts on a Railway volume
+- **Single container** — no external dependencies, fast startup
+- **SQLite-backed** — embedded database, zero config
+- **Auth flexibility** — users, groups, SSH keys, API keys, OAuth2
+- **Production-ready** — used for secure file transfer in regulated industries
 
-## Ports
+## Common Use Cases
+
+- **Secure file transfer** — SFTP-based uploads and downloads for applications
+- **DevOps pipelines** — artifact storage and CI/CD file distribution
+- **Self-hosted cloud storage** — WebDAV/WebClient for personal file access
+- **FTP replacement** — modernize legacy FTP with TLS
+- **API access** — REST API for programmatic file management
+- **Multi-user hosting** — per-user SFTP accounts for teams
+
+### Deployment Dependencies
+
+The deploy form pre-fills all required variables. No additional services needed — SFTPGo runs as a single container with a volume for persistent storage.
+
+**After the first successful deploy:**
+
+1. Open `https://<your-domain>/web/admin/setup` to create your admin account
+2. The setup page only appears once on first run
+3. Create users and start transferring files
+
+## About Hosting
+
+SFTPGo runs as a single container on Railway with a volume mount at `/var/lib/sftpgo`. All configuration, user data, and the SQLite database persist across restarts.
+
+### Default Ports
 
 | Port | Service | Description |
 |------|---------|-------------|
 | 8080 | HTTP/S | Web UI, WebClient, REST API (mapped to public domain) |
 | 2022 | SFTP | SFTP file transfer service |
+
+## Dependencies for
+
+This template deploys a single SFTPGo container with a Railway volume for persistent storage. No additional services are required.
 
 ## Configuration
 
@@ -39,18 +61,9 @@ All configuration is via environment variables. SFTPGo converts env vars to conf
 - `SFTPGO_HTTPD__BINDINGS__0__PORT` → `httpd.bindings[0].port`
 - `SFTPGO_SFTPD__BINDINGS__0__PORT` → `sftpd.bindings[0].port`
 
-## Dependencies
-
-- **Storage**: A Railway volume mounted at `/var/lib/sftpgo` for the SQLite database and config persistence
-- **No external services required** — runs as a single container with embedded SQLite
+For the full list of environment variables, see the [SFTPGo documentation](https://docs.sftpgo.com/enterprise/env-vars/).
 
 ## Documentation
 
-- [SFTPGo Documentation](https://docs.sftpgo.com/)
-- [Configuration Reference](https://docs.sftpgo.com/enterprise/config-file/)
-- [Docker Deployment Guide](https://docs.sftpgo.com/enterprise/docker/)
-- [GitHub Repository](https://github.com/drakkan/sftpgo)
-
-## License
-
-SFTPGo Community Edition is licensed under AGPL-3.0.
+- [SFTPGo Docs](https://docs.sftpgo.com/)
+- [SFTPGo GitHub](https://github.com/drakkan/sftpgo)
