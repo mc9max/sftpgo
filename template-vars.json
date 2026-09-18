@@ -25,8 +25,8 @@
     "isOptional": false
   },
   "SFTPGO_DATA_PROVIDER__NAME": {
-    "defaultValue": "/var/lib/sftpgo/sftpgo.db",
-    "description": "SQLite database file path.",
+    "defaultValue": "/tmp/sftpgo.db",
+    "description": "SQLite database file path (use /tmp for Railway uid-1000 compatibility).",
     "isOptional": false
   },
   "SFTPGO_LOG_LEVEL": {
