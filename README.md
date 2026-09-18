@@ -6,7 +6,7 @@ Deploy SFTPGo, a secure file transfer server with web UI, SFTP, FTP/S, and WebDA
 
 Host your own SFTPGo instance on Railway. This template provisions the SFTPGo server with persistent storage for user accounts, SSH keys, and SQLite configuration.
 
-[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/melodious-perception)
+[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/jZaNZf)
 
 ## Why Deploy
 
@@ -41,7 +41,9 @@ The deploy form pre-fills all required variables. No additional services needed 
 
 ## About Hosting
 
-SFTPGo runs as a single container on Railway with a volume mount at `/var/lib/sftpgo`. All configuration, user data, and the SQLite database persist across restarts.
+SFTPGo runs as a single container on Railway with a volume mount at `/var/lib/sftpgo`. All configuration, user data, and the SQLite database persist across restarts. The container starts as root only to fix volume permissions, then runs SFTPGo.
+
+Behind Railway's reverse proxy the client IP changes between requests, so this template sets `SFTPGO_HTTPD__TOKEN_VALIDATION=1` (SFTPGo's documented proxy mode) — without it, logging in fails with "The form token is not valid".
 
 ### Default Ports
 
@@ -59,7 +61,10 @@ This template deploys a single SFTPGo container with a Railway volume for persis
 All configuration is via environment variables. SFTPGo converts env vars to config by prefixing with `SFTPGO_` and using `__` for nested keys. For example:
 
 - `SFTPGO_HTTPD__BINDINGS__0__PORT` → `httpd.bindings[0].port`
+- `SFTPGO_HTTPD__TOKEN_VALIDATION` → `httpd.token_validation` (set to `1` by this template; required behind Railway's proxy)
 - `SFTPGO_SFTPD__BINDINGS__0__PORT` → `sftpd.bindings[0].port`
+
+The SQLite database (`SFTPGO_DATA_PROVIDER__NAME`) lives on the persistent volume so your admin account, users, and settings survive redeploys. SSH host keys are auto-generated on first start in the same volume.
 
 For the full list of environment variables, see the [SFTPGo documentation](https://docs.sftpgo.com/enterprise/env-vars/).
 
