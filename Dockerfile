@@ -9,9 +9,8 @@ ENV SFTPGO_HTTPD__BINDINGS__0__PORT=8080 \
 # Web UI + SFTP ports
 EXPOSE 8080 2022
 
-# Volume for persistent data (users, config, keys, sqlite db)
-# Run as root so Railway's root-owned volume mount is writable
+# Create data dir and run as root so Railway's root-owned volume mount is writable
 USER root
-VOLUME /var/lib/sftpgo
+RUN mkdir -p /var/lib/sftpgo && chown root:root /var/lib/sftpgo
 WORKDIR /var/lib/sftpgo
 CMD ["sftpgo", "serve"]
