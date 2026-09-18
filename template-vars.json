@@ -14,6 +14,11 @@
     "description": "Bind address for the SFTP server.",
     "isOptional": true
   },
+  "SFTPGO_SFTPD__HOSTKEYS_PATH": {
+    "defaultValue": "/tmp",
+    "description": "Directory for storing host keys (use /tmp for Railway compatibility).",
+    "isOptional": true
+  },
   "SFTPGO_HTTPD__BINDINGS__0__ADDRESS": {
     "defaultValue": "0.0.0.0",
     "description": "Bind address for the Web UI.",
