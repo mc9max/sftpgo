@@ -10,6 +10,7 @@ ENV SFTPGO_HTTPD__BINDINGS__0__PORT=8080 \
 EXPOSE 8080 2022
 
 USER root
-RUN mkdir -p /var/lib/sftpgo && chown root:root /var/lib/sftpgo
-WORKDIR /var/lib/sftpgo
-CMD ["sftpgo", "serve"]
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
