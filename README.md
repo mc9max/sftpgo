@@ -6,7 +6,7 @@ Deploy SFTPGo, a secure file transfer server with web UI, SFTP, FTP/S, and WebDA
 
 Host your own SFTPGo instance on Railway. This template provisions the SFTPGo server with persistent storage for user accounts, SSH keys, and SQLite configuration.
 
-[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/jZaNZf)
+[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/melodious-percepti-1)
 
 ## Why Deploy
 
