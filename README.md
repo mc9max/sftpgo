@@ -50,17 +50,14 @@ Behind Railway's reverse proxy the client IP changes between requests, so this t
 | Port | Service | Description |
 |------|---------|-------------|
 | 8080 | HTTP/S | Web UI, WebClient, REST API (mapped to public domain) |
-| 2022 | SFTP | SFTP file transfer service (requires a TCP proxy — see below) |
+| 2022 | SFTP | SFTP file transfer service (TCP proxy pre-wired — see below) |
 
-### Enabling SFTP transfers
+### SFTP transfers
 
-Railway's HTTP domain only exposes port 8080. To reach the SFTP service (port 2022), add a TCP proxy after deploying:
-
-1. In your Railway project, open the `sftpgo` service → **Settings** → **Networking** → **TCP Proxy** → generate one on port `2022`.
-2. Connect using the proxy host and port Railway gives you (e.g. `xxx.proxy.rlwy.net:31234`):
+This template pre-wires a Railway TCP proxy on port `2022`, so the SFTP service is reachable out of the box. After deploying, Railway assigns the proxy host and port — find them under the `sftpgo` service → **Settings** → **Networking** → **TCP Proxy**, then connect:
 
 ```
-sftp -P 31234 youruser@xxx.proxy.rlwy.net
+sftp -P <proxy-port> youruser@<proxy-host>.proxy.rlwy.net
 ```
 
 ## Dependencies for
